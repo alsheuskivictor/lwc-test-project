@@ -1,0 +1,32 @@
+{
+  "force.allowAnonymousUsageTracking": false,
+  "workbench.startupEditor": "welcomePage",
+  "workbench.editor.enablePreview": false,
+  //"window.zoomLevel": 1,
+  "git.enableSmartCommit": true,
+  "launch": {
+  },
+  "workbench.activityBar.visible": true,
+  "breadcrumbs.enabled": false,
+  "editor.rulers": [120],
+  "editor.minimap.enabled": false,
+
+  "workbench.colorCustomizations": {
+      //"editorRuler.foreground": "#ff4081",
+      //"editor.selectionBackground": "#a10707",
+      //"editor.selectionHighlightBackground": "#188802",
+      //"activityBar.background": "#000000",
+      "editor.action.selectHighlights": true  // show occurrences when select word
+      //"editor.action.changeAll": "#daec04",
+      //"editor.action.selectAllMatches": true
+    
+  },
+  "editor.tokenColorCustomizations": null,
+
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/bower_components": true,
+    "**/.sfdx": true
+  }
+}
+
