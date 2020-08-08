@@ -14,7 +14,11 @@ const COLUMNS = [
     { label: 'Account Name', fieldName: ACCOUNT_NAME_FIELD.fieldApiName, type: 'url', 
     typeAttributes: {label: { fieldName: 'Name' }, target: '_blank'}},
     { label: 'Mobile Phone', fieldName: MOBILE_PHONE_FIELD.fieldApiName, type: 'phone'},
-    { label: 'Created Date', fieldName: CREATED_DATE_FIELD.fieldApiName, type: 'date-local'}
+    { label: 'Created Date', fieldName: CREATED_DATE_FIELD.fieldApiName, type: 'date',
+        typeAttributes:{
+            month: "2-digit", day: "2-digit", year: "numeric", hour: "2-digit", minute: "2-digit"
+        }
+    }
 ];
 
 export default class ContactListForm extends LightningElement {
