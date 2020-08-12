@@ -3,7 +3,6 @@ public class ContactControllerTest {
     @isTest static void testGetContacts() {
         
         Integer numberOfContacts = 10;
-        
         List<Contact> contactsToInsert = new List<Contact>();
         for ( Integer i=0; i<numberOfContacts; i++ ) {
             Contact contact = new Contact(LastName='Test' + i);
@@ -39,7 +38,7 @@ public class ContactControllerTest {
 
         System.assertEquals(2, filtredContacts.size(), 'Should be returned 2 Contacts with matched substring' + 
             'in First Name');
-            
+
     }
 
     @isTest static void testFilterContactsByLastName() {

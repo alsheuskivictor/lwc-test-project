@@ -10,6 +10,7 @@ export default class ContactList extends LightningElement {
     
     @wire(getContacts, {searchName: '$searchName'}) 
     wiredContacts({data, error}) {
+       
         if(data) {
             let resultData = [];
             for (let i=0; i<data.length; i++) {
