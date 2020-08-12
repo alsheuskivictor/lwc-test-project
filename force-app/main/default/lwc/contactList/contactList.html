@@ -3,6 +3,12 @@
         key-field="id"
         data={contacts}
         columns={columns}
+        onrowaction={handleRowAction}
     >
     </lightning-datatable>
+    <c-delete-confirmation-modal
+        openconfirmation={openconfirmation}
+        oncloseconfirmation={handleCloseConfirmation}
+        ondelete={handleDelete}
+    ></c-delete-confirmation-modal>
 </template>
