@@ -11,11 +11,11 @@ public with sharing class ContactController {
 				ORDER BY LastName ASC
 			];
 		} else {
-			String filterVar = '%' + searchName + '%';
+			String filterVariable = '%' + searchName + '%';
 			contacts = [
 				SELECT Id, FirstName, LastName, Email, Account.Name, MobilePhone, CreatedDate
 				FROM Contact
-				WHERE Name LIKE :filterVar
+				WHERE Name LIKE :filterVariable
 				ORDER BY LastName ASC
 			];
         }

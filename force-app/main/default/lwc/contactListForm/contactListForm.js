@@ -44,6 +44,7 @@ export default class ContactListForm extends LightningElement {
 
     columns = COLUMNS;
     @track searchName = '';
+
     changedSearchName = '';
 
     handleChangeSearchName(event) {
