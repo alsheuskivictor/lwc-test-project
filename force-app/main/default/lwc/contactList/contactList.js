@@ -3,11 +3,12 @@ import getContacts from '@salesforce/apex/ContactController.getContacts';
 
 export default class ContactList extends LightningElement {
 
-    @api columns;
-    @track contacts = [];
-    @track error;
-    
-    @wire(getContacts) 
+    @api searchName = '';
+    @api columns;
+    @track contacts = [];
+    @track error;
+        
+    @wire(getContacts, {searchName: '$searchName'}) 
     wiredContacts({data, error}) {
         if(data) {
             let resultData = [];

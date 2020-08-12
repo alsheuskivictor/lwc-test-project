@@ -43,5 +43,15 @@ const COLUMNS = [
 export default class ContactListForm extends LightningElement {
 
     columns = COLUMNS;
-   
+    @track searchName = '';
+    changedSearchName = '';
+
+    handleChangeSearchName(event) {
+		this.changedSearchName = event.detail.value;
+    }
+
+    handleClickFilterButton(event) { 
+        this.searchName = this.changedSearchName;
+	}
+    
 }
