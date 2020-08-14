@@ -1,7 +1,7 @@
 
 public with sharing class ContactController {
     
-    @AuraEnabled(cacheable=true)
+    @AuraEnabled
     public static List<Contact> getContacts(String searchName) {
 
         List<Contact> contacts;
@@ -22,11 +22,6 @@ public with sharing class ContactController {
         }
         
         return contacts;
-	}
-	
-	@AuraEnabled(cacheable=true)
-	public static void deleteContacts(List < String > contactIds) {
-			delete[SELECT id FROM Contact WHERE Id IN: contactIds];
 	}
 
 }

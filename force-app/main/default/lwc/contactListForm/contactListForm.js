@@ -2,6 +2,7 @@ import { LightningElement, wire, track } from 'lwc';
 import FIRST_NAME_FIELD from '@salesforce/schema/Contact.FirstName';
 import LAST_NAME_FIELD from '@salesforce/schema/Contact.LastName';
 import EMAIL_FIELD from '@salesforce/schema/Contact.Email';
+import ACCOUNTID_FIELD from '@salesforce/schema/Contact.AccountId';
 import MOBILE_PHONE_FIELD from '@salesforce/schema/Contact.MobilePhone';
 import CREATED_DATE_FIELD from '@salesforce/schema/Contact.CreatedDate';
 
@@ -48,24 +49,13 @@ const COLUMNS = [
           name: "delete",
           iconName: "utility:delete",
           disabled: { fieldName: "actionDisabled" },
-          class: "btn_next"
+          class: "btn_next",
         }
-      }    
+    }    
 ];
 
 export default class ContactListForm extends LightningElement {
 
     columns = COLUMNS;
-    searchName = '';
-
-    changedSearchName = '';
-
-    handleChangeSearchName(event) {
-		this.changedSearchName = event.detail.value;
-    }
-
-    handleClickFilterButton(event) { 
-        this.searchName = this.changedSearchName;
-	}
-    
+  
 }

@@ -1,14 +1,60 @@
 <template>
-    <lightning-datatable
-        key-field="id"
-        data={contacts}
-        columns={columns}
-        onrowaction={handleRowAction}
-    >
-    </lightning-datatable>
-    <c-delete-confirmation-modal
-        openconfirmation={openconfirmation}
-        oncloseconfirmation={handleCloseConfirmation}
-        ondelete={handleDelete}
-    ></c-delete-confirmation-modal>
+
+    <template if:true={openCreateModal}>
+        <c-create-contact
+            oncancel={handleCancelCreateContact}
+            onsave={handleSaveContact}
+        ></c-create-contact>
+    </template>
+
+    <template if:true={openDeleteModal}>
+        <c-confirm-delete
+            record-id={recordId}
+            oncancel={handleCancelDeleteContact}
+            ondelete={handleDeleteContact}
+        ></c-confirm-delete>
+    </template>
+
+    <lightning-card>
+        <lightning-input
+            label="SEARCH BY NAME"
+            type="search"
+            onchange={handleChangeSearchName}
+            class="search-input">
+        </lightning-input> <br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <lightning-button-group>
+            <lightning-button 
+                label="FILTER"
+                variant="brand" 
+                title="Filtre by Name" 
+                onclick={handleClickFilterButton} 
+                class="slds-align--absolute-left">
+            </lightning-button>
+            &nbsp;&nbsp;
+            <lightning-button 
+                label="NEW"
+                variant="brand" 
+                title="New Contact"
+                onclick={handleClickNewButton} 
+                class="slds-align--absolute-left">
+            </lightning-button>
+        </lightning-button-group>
+    </lightning-card>
+
+    <lightning-card>
+        <lightning-datatable
+            key-field="id"
+            data={contacts}
+            columns={columns}
+            onrowaction={handleRowAction}
+            hide-checkbox-column
+        >
+        </lightning-datatable>
+    </lightning-card>
+
+    <template if:true={error}>
+        <p>Error retrieving data</p>
+    </template>    
+
 </template>

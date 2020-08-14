@@ -1,23 +1,7 @@
 <template>
     <lightning-card>
         <lightning-card>
-            <lightning-input
-                label="SEARCH BY NAME"
-                type="text"
-                value={searchKey}
-                onchange={handleChangeSearchName}
-                class="slds-p-horizontal_small">
-            </lightning-input> <br/>
-            <lightning-button 
-                label="FILTER"
-                variant="brand" 
-                title="Primary action" 
-                onclick={handleClickFilterButton} 
-                class="slds-align--absolute-center">
-            </lightning-button>
-        </lightning-card>
-        <lightning-card>
-            <c-contact-list columns={columns} search-name={searchName} ></c-contact-list>
+            <c-contact-list columns={columns}></c-contact-list>
         </lightning-card>
     </lightning-card>
 </template>
