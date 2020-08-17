@@ -26,6 +26,6 @@ export default class LeadList extends LightningElement {
 
     columns = COLUMNS;
 
-    @wire(getLeads)
-    leads;
+    @wire(getLeads) leads;
+    
 }

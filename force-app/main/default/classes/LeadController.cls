@@ -1,16 +1,9 @@
 public with sharing class LeadController {
 
     @AuraEnabled(cacheable=true)
-    public static List<Contact> getLeads(String searchName) {
+    public static List<Lead> getLeads() {
 
-        List<Lead> leads;
-        leads = [
-            SELECT Id, Name, Title, Phone
-            FROM Lead
-            ORDER BY Name ASC
-        ];
-        
-        return leads;
+        return [ SELECT Id, Name, Title, Phone FROM Lead ORDER BY Name ASC ];
 	}
 
 }
