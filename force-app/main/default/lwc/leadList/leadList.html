@@ -1,12 +1,9 @@
 <template>
-    <lightning-card title="Leads" icon-name="standard:lead">
+    <lightning-card title="Lead List" icon-name="standard:lead">
         <div class="slds-var-m-around_medium">    
             <lightning-datatable
-                key-field="id"
-                data={leads}
-                columns={columns}
-                hide-checkbox-column
-            >
+                key-field="Id" data={leads} columns={columns} hide-checkbox-column="true"
+                show-row-number-column="true" onsave={handleSave} draft-values={draftValues}>          
             </lightning-datatable>
         </div>>
     </lightning-card>    
