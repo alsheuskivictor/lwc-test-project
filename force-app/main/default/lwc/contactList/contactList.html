@@ -3,16 +3,16 @@
     <template if:true={openCreateModal}>
         <c-create-contact
             oncancel={handleCancelCreateContact}
-            onsave={handleSaveContact}
-        ></c-create-contact>
+            onsave={handleSaveContact}>
+        </c-create-contact>
     </template>
 
     <template if:true={openDeleteModal}>
         <c-confirm-delete
             record-id={recordId}
             oncancel={handleCancelDeleteContact}
-            ondelete={handleDeleteContact}
-        ></c-confirm-delete>
+            ondelete={handleDeleteContact}>
+        </c-confirm-delete>
     </template>
 
     <lightning-card>
@@ -48,8 +48,7 @@
             data={contacts}
             columns={columns}
             onrowaction={handleRowAction}
-            hide-checkbox-column
-        >
+            hide-checkbox-column>
         </lightning-datatable>
     </lightning-card>
 
