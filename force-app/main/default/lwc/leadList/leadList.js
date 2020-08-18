@@ -31,11 +31,11 @@ const COLUMNS = [
 
 export default class LeadList extends LightningElement {
 
-    @track columns = COLUMNS;
-    @track leads;
-    @track error;
-    @track draftValues = [];
-    @track wiredLeads;
+    columns = COLUMNS;
+    leads;
+    error;
+    draftValues = [];
+    wiredLeads;
 
     @wire (getLeads)
     leadList (result) {
