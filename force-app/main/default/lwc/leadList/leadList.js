@@ -35,11 +35,12 @@ export default class LeadList extends LightningElement {
     @track leads;
     @track error;
     @track draftValues = [];
-    @track wiredResult;
+    @track wiredLeads;
 
     @wire (getLeads)
-    wiredLeads (result) {
-        this.wiredResult = result;
+    leadList (result) {
+        console.log({result});
+        this.wiredLeads = result;
         if(result.data) {
             this.leads = [];
             for (let i=0; i<result.data.length; i++) {
@@ -76,7 +77,7 @@ export default class LeadList extends LightningElement {
                 })
             );
             this.draftValues = [];
-            return refreshApex(this.wiredResult);
+            return refreshApex(this.wiredLeads);
         }).catch(error => {
             this.dispatchEvent(
                 new ShowToastEvent({
