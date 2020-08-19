@@ -1,0 +1,22 @@
+<template>
+
+    <template if:true={openDeleteModal}>
+        <c-confirm-delete
+            record-id={recordId}
+            oncancel={handleCancelDeleteContact}
+            ondelete={handleDeleteContact}
+        ></c-confirm-delete>
+    </template>
+
+    <lightning-card title="Account List" icon-name="standard:account">
+        <div class="slds-var-m-around_medium">  
+            <lightning-datatable key-field="id"  data={accounts} columns={columns}  onrowaction={handleRowAction}>
+            </lightning-datatable>
+        </div>
+    </lightning-card>
+
+    <template if:true={error}>
+        <p>Error retrieving data</p>
+    </template>    
+
+</template>
