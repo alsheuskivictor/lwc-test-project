@@ -1,22 +1,94 @@
 <template>
+    <div class="slds-table--edit_container slds-is-relative inlineEdit--enabled keyboardMode--active 
+        inlineEditGrid forceInlineEditGrid">
+        <table class="slds-table forceRecordLayout slds-table--edit slds-table--bordered 
+            slds-m-around_x-small uiVirtualDataTable">
+            <thead>
+                <tr class="slds-text-title_caps">
+                    <th>
+                        <div class="slds-truncate" title="Name">Name</div>
+                    </th>
+                    <th>
+                        <div class="slds-truncate" title="Rating">Rating</div>
+                    </th>
+                    <th>
+                        <div title="Delete">Delete</div>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <template for:each={accounts} for:item="account">
+                    <tr key={account.Id} class="slds-hint-parent" data-trid={account.Id}>
+                        
+                        <td class="slds-cell-edit" data-tdid={account.idName} data-tds="tabletds">
+                            <span class="slds-grid slds-grid_align-spread" >
+                                <span class="slds-truncate"  data-accountidname={account.idName} >{account.Name}</span>
+                                <span class="triggerContainer" data-tdid={account.idName} >
+                                    <button onclick={handleEditName}  data-inputid={account.idName}
+                                        data-accountname={account.Name} data-editbuttonid="id"
+                                        class="slds-button slds-button_icon slds-cell-edit__button 
+                                            slds-m-right_x-small editIcon">
+                                        <svg data-button="edit"  class="slds-button__icon   slds-button__icon_edit"
+                                            data-svgid={account.idName}>
+                                            <use
+                                                xlink:href="/_slds/icons/utility-sprite/svg/symbols.svg?cache=9.31.2-1#edit">
+                                            </use>
+                                        </svg>
+                                    </button>
+                                </span>
+                                <lightning-input data-editid={account.idName} onfocusout={handleHideEdit}
+                                    value={account.Name} data-accountid={account.Id} class="slds-hidden"
+                                    data-element="Account">
+                                </lightning-input>
+                            </span>
+                        </td>
+                        <td class="slds-cell-edit cellContainer" data-tdid={account.idRating} data-tds="tabletds">
+                            <span class="slds-grid slds-grid_align-spread">
+                                <span class="slds-truncate">{account.Rating}</span>
+                                <button onclick={handleEditRating} data-inputid={account.idRating}
+                                    data-accountid={account.Id} data-editbuttonid="id"
+                                    class="slds-button slds-button_icon slds-cell-edit__button 
+                                        slds-m-right_x-small editIcon">
+                                    <svg  aria-hidden="true" class="slds-button__icon   slds-button__icon_edit"  
+                                        data-svgid={account.idRating} >
+                                        <use
+                                            xlink:href="/_slds/icons/utility-sprite/svg/symbols.svg?cache=9.31.2-1#edit">
+                                        </use>
+                                    </svg>
+                                </button>
+                                <c-rating-list account={account} onrerenderaccounts={reRenderAccounts}
+                                    onenableeditbuttons={unblockEditButtons} onaccountptions={accountOptions}>
+                                </c-rating-list>
+                            </span>
+                        </td>
+
+                        <td>
+                            <button class="slds-button slds-button_icon" data-accountid={account.Id}
+                                onclick={handleDelete}>
+                                <svg class="slds-button__icon">
+                                    <use xlink:href="/_slds/icons/utility-sprite/svg/symbols.svg#delete"></use>
+                                </svg>
+                            </button>
+                        </td>
+                    </tr>
+                </template>
+            </tbody>
+        </table>
+        <div data-buttonsid="editConfirm" class="slds-hidden slds-docked-form-footer">
+            <button class="slds-button slds-button_neutral" onclick={handleCancelChanges} title="Cancel">
+                Cancel
+            </button>
+            <button class="slds-button slds-button_brand" onclick={handleSaveChanges} title="Save">
+                Save
+            </button>
+        </div>
+    </div>
 
     <template if:true={openDeleteModal}>
         <c-confirm-delete
             record-id={recordId}
-            oncancel={handleCancelDeleteContact}
-            ondelete={handleDeleteContact}
-        ></c-confirm-delete>
+            oncancel={handleCancelDelete}
+            ondelete={handleConfirmDelete}>
+        </c-confirm-delete>
     </template>
-
-    <lightning-card title="Account List" icon-name="standard:account">
-        <div class="slds-var-m-around_medium">  
-            <lightning-datatable key-field="id"  data={accounts} columns={columns}  onrowaction={handleRowAction}>
-            </lightning-datatable>
-        </div>
-    </lightning-card>
-
-    <template if:true={error}>
-        <p>Error retrieving data</p>
-    </template>    
-
 </template>
