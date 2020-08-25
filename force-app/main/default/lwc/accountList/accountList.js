@@ -55,7 +55,7 @@ export default class AccountList extends LightningElement {
         const accountIdName = this.template.querySelector('span[data-accountidname="' + editId + '"]');
         accountIdName.classList.toggle("slds-hidden");
         const accountId = event.target.dataset.accountid;
-                
+
         const newValue = event.target.value;
              
         if (!(this.currentValue === newValue)) {
@@ -115,7 +115,6 @@ export default class AccountList extends LightningElement {
 
     handleConfirmDelete() {
         this.openDeleteModal = false;
-        this.template.querySelector('div[data-buttonsid="editConfirm"]').classList.toggle("slds-hidden");
         this.unblockEditButtons();
         return refreshApex(this.accountsResult);
     }
