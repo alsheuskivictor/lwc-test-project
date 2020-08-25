@@ -1,10 +1,8 @@
 <template>
-    <div class="slds-table--edit_container slds-is-relative inlineEdit--enabled keyboardMode--active 
-        inlineEditGrid forceInlineEditGrid">
-        <table class="slds-table forceRecordLayout slds-table--edit slds-table--bordered 
-            slds-m-around_x-small uiVirtualDataTable">
+    <div class="slds-var-m-around_medium">
+        <table class="slds-table slds-table--bordered">
             <thead>
-                <tr class="slds-text-title_caps">
+                <tr>
                     <th>
                         <div class="slds-truncate" title="Name">Name</div>
                     </th>
@@ -23,7 +21,7 @@
                         <td class="slds-cell-edit" data-tdid={account.idName} data-tds="tabletds">
                             <span class="slds-grid slds-grid_align-spread" >
                                 <span class="slds-truncate"  data-accountidname={account.idName} >{account.Name}</span>
-                                <span class="triggerContainer" data-tdid={account.idName} >
+                                <span data-tdid={account.idName} >
                                     <button onclick={handleEditName}  data-inputid={account.idName}
                                         data-accountname={account.Name} data-editbuttonid="id"
                                         class="slds-button slds-button_icon slds-cell-edit__button 
@@ -42,7 +40,7 @@
                                 </lightning-input>
                             </span>
                         </td>
-                        <td class="slds-cell-edit cellContainer" data-tdid={account.idRating} data-tds="tabletds">
+                        <td class="slds-cell-edit" data-tdid={account.idRating} data-tds="tabletds">
                             <span class="slds-grid slds-grid_align-spread">
                                 <span class="slds-truncate">{account.Rating}</span>
                                 <button onclick={handleEditRating} data-inputid={account.idRating}

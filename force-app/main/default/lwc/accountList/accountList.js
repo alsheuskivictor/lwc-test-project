@@ -54,20 +54,18 @@ export default class AccountList extends LightningElement {
 
         const accountIdName = this.template.querySelector('span[data-accountidname="' + editId + '"]');
         accountIdName.classList.toggle("slds-hidden");
-        
-        const newValue = event.target.value;
-        console.log('newValue=>' + newValue);
         const accountId = event.target.dataset.accountid;
-        const isEqual = (this.currentValue === newValue);
-               
-        if (!isEqual) {
+                
+        const newValue = event.target.value;
+             
+        if (!(this.currentValue === newValue)) {
             this.accounts = this.accounts.map(function(account) {			
                  if (account.Id === accountId) {
                      account.Name = newValue;
                  }	
                  return account; 	
             });
-            this.template.querySelector('td[data-tdid="' + editId + '"]').style.backgroundColor = "#FAFFBD";
+            this.template.querySelector('td[data-tdid="' + editId + '"]').style.backgroundColor = "#eef48b";
             this.template.querySelector('div[data-buttonsid="editConfirm"]').classList.toggle("slds-hidden");
             this.currentAccountId = accountId;
             this.currentEditId = editId;
@@ -130,7 +128,7 @@ export default class AccountList extends LightningElement {
             }
             return account;
         });
-        this.template.querySelector('td[data-tdid="'+accountFromChild.idRating+'"]').style.backgroundColor="#FAFFBD";
+        this.template.querySelector('td[data-tdid="'+accountFromChild.idRating+'"]').style.backgroundColor="#eef48b";
         this.template.querySelector('div[data-buttonsid="editConfirm"]').classList.toggle("slds-hidden");
         this.currentEditId = accountFromChild.idRating;
         this.currentAccountId = accountFromChild.Id;
